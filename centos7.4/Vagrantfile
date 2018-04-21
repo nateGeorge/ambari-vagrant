@@ -18,54 +18,54 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell, :path => "bootstrap.sh"
 
-  config.vm.define :c7301 do |c7301|
+  config.vm.define :c7401 do |c7301|
     # uncomment the line below to set up the ambari dev environment
     # c7301.vm.provision :shell, :path => "dev-bootstrap.sh"
     c7301.vm.hostname = "c7301.ambari.apache.org"
     c7301.vm.network :private_network, ip: "192.168.73.101"
   end
 
-  config.vm.define :c7302 do |c7302|
+  config.vm.define :c7402 do |c7302|
     c7302.vm.hostname = "c7302.ambari.apache.org"
     c7302.vm.network :private_network, ip: "192.168.73.102"
   end
 
-  config.vm.define :c7303 do |c7303|
+  config.vm.define :c7403 do |c7303|
     c7303.vm.hostname = "c7303.ambari.apache.org"
     c7303.vm.network :private_network, ip: "192.168.73.103"
   end
 
-  config.vm.define :c7304 do |c7304|
+  config.vm.define :c7404 do |c7304|
     c7304.vm.hostname = "c7304.ambari.apache.org"
     c7304.vm.network :private_network, ip: "192.168.73.104"
   end
 
-  config.vm.define :c7305 do |c7305|
+  config.vm.define :c7405 do |c7305|
     c7305.vm.hostname = "c7305.ambari.apache.org"
     c7305.vm.network :private_network, ip: "192.168.73.105"
   end
 
-  config.vm.define :c7306 do |c7306|
+  config.vm.define :c7406 do |c7306|
     c7306.vm.hostname = "c7306.ambari.apache.org"
     c7306.vm.network :private_network, ip: "192.168.73.106"
   end
 
-  config.vm.define :c7307 do |c7307|
+  config.vm.define :c7407 do |c7307|
     c7307.vm.hostname = "c7307.ambari.apache.org"
     c7307.vm.network :private_network, ip: "192.168.73.107"
   end
 
-  config.vm.define :c7308 do |c7308|
+  config.vm.define :c7408 do |c7308|
     c7308.vm.hostname = "c7308.ambari.apache.org"
     c7308.vm.network :private_network, ip: "192.168.73.108"
   end
 
-  config.vm.define :c7309 do |c7309|
+  config.vm.define :c7409 do |c7309|
     c7309.vm.hostname = "c7309.ambari.apache.org"
     c7309.vm.network :private_network, ip: "192.168.73.109"
   end
 
-  config.vm.define :c7310 do |c7310|
+  config.vm.define :c7410 do |c7310|
     c7310.vm.hostname = "c7310.ambari.apache.org"
     c7310.vm.network :private_network, ip: "192.168.73.110"
   end
