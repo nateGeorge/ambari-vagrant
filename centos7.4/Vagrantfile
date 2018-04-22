@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", 3072] # RAM allocated to each VM
+    vb.customize ["modifyvm", :id, "--memory", 2048] # RAM allocated to each VM
   end
 
   config.vm.provision :shell, :path => "bootstrap.sh"
@@ -23,9 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # c7301.vm.provision :shell, :path => "dev-bootstrap.sh"
     c7401.vm.hostname = "c7401.ambari.apache.org"
     c7401.vm.network :private_network, ip: "192.168.73.101"
-    c7401.vm.provider "virtualbox" do |c7401v|
-        c7401v.memory = 2048
-    end
   end
 
   config.vm.define :c7402 do |c7402|
@@ -37,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     c7403.vm.hostname = "c7403.ambari.apache.org"
     c7403.vm.network :private_network, ip: "192.168.73.103"
     c7403.vm.provider "virtualbox" do |c7403v|
-        c7403v.memory = 2048
+        c7403v.memory = 3072
     end
   end
 
@@ -45,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     c7404.vm.hostname = "c7404.ambari.apache.org"
     c7404.vm.network :private_network, ip: "192.168.73.104"
     c7404.vm.provider "virtualbox" do |c7404v|
-        c7404v.memory = 2048
+        c7404v.memory = 3072
     end
   end
 
@@ -53,34 +50,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     c7405.vm.hostname = "c7405.ambari.apache.org"
     c7405.vm.network :private_network, ip: "192.168.73.105"
     c7405.vm.provider "virtualbox" do |c7405v|
-        c7405v.memory = 2048
+        c7405v.memory = 3072
     end
   end
 
-  config.vm.define :c7406 do |c7406|
-    c7406.vm.hostname = "c7406.ambari.apache.org"
-    c7406.vm.network :private_network, ip: "192.168.73.106"
-  end
+  #config.vm.define :c7406 do |c7406|
+    #c7406.vm.hostname = "c7406.ambari.apache.org"
+    #c7406.vm.network :private_network, ip: "192.168.73.106"
+  #end
 
-  config.vm.define :c7407 do |c7407|
-    c7407.vm.hostname = "c7407.ambari.apache.org"
-    c7407.vm.network :private_network, ip: "192.168.73.107"
-  end
+  #config.vm.define :c7407 do |c7407|
+    #c7407.vm.hostname = "c7407.ambari.apache.org"
+    #c7407.vm.network :private_network, ip: "192.168.73.107"
+  #end
 
-  config.vm.define :c7408 do |c7408|
-    c7408.vm.hostname = "c7408.ambari.apache.org"
-    c7408.vm.network :private_network, ip: "192.168.73.108"
-  end
+  #config.vm.define :c7408 do |c7408|
+    #c7408.vm.hostname = "c7408.ambari.apache.org"
+    #c7408.vm.network :private_network, ip: "192.168.73.108"
+  #end
 
-  config.vm.define :c7409 do |c7409|
-    c7409.vm.hostname = "c7409.ambari.apache.org"
-    c7409.vm.network :private_network, ip: "192.168.73.109"
-  end
+  #config.vm.define :c7409 do |c7409|
+    #c7409.vm.hostname = "c7409.ambari.apache.org"
+    #c7409.vm.network :private_network, ip: "192.168.73.109"
+  #end
 
-  config.vm.define :c7410 do |c7410|
-    c7410.vm.hostname = "c7410.ambari.apache.org"
-    c7410.vm.network :private_network, ip: "192.168.73.110"
-  end
+  #config.vm.define :c7410 do |c7410|
+    #c7410.vm.hostname = "c7410.ambari.apache.org"
+    #c7410.vm.network :private_network, ip: "192.168.73.110"
+  #end
 
 
 
