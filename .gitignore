@@ -1,1 +1,7 @@
+# ignore solution files
+*.ipynb
+*.json
+*.csv
+# ignore anaconda install file
+anaconda.sh
 .vagrant/
