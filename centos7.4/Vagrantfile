@@ -4,10 +4,40 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+# script to install anaconda
+# TODO: download to shared /vagrant folder once, if already there, don't download
+$conda_installation = <<SCRIPT
+yum -y install bzip2
+if [ ! -f /vagrant/anaconda.sh ]; then
+    curl https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh -o /vagrant/anaconda.sh || exit 1;
+fi
+
+grep -q anaconda ~/.bashrc;
+if [[ ${?} -ne 0 ]]; then
+    echo "export PATH=\"/opt/anaconda3/bin:\${PATH}\"" >> ~/.bashrc
+fi
+
+grep -q anaconda /home/vagrant/.bashrc;
+if [[ ${?} -ne 0 ]]; then
+    bash /vagrant/anaconda.sh -b -f -p /opt/anaconda3 || exit 1;
+    echo "export PATH=\"/opt/anaconda3/bin:\${PATH}\"" >> /home/vagrant/.bashrc
+fi
+
+source ~/.bashrc
+conda info || exit 1;
+pip install pyspark findspark;
+conda clean -t || exit 1;
+yum clean all || exit 1;
+echo '' > ${HOME}/.bash_history
+history -c
+SCRIPT
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "bento/centos-7.4"
+
+  config.vm.provision "shell", inline: $conda_installation
 
   # Fixes changes from https://github.com/mitchellh/vagrant/pull/4707
   config.ssh.insert_key = false
@@ -23,6 +53,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # c7301.vm.provision :shell, :path => "dev-bootstrap.sh"
     c7401.vm.hostname = "c7401.ambari.apache.org"
     c7401.vm.network :private_network, ip: "192.168.73.101"
+    c7401.vm.provider :virtualbox do |vb|
+        # need 4GB RAM to run everything successfully
+        vb.customize ["modifyvm", :id, "--memory", "4096"]
+    end
   end
 
   config.vm.define :c7402 do |c7402|
