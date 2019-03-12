@@ -5,7 +5,8 @@
 VAGRANTFILE_API_VERSION = "2"
 
 # script to install anaconda
-# TODO: download to shared /vagrant folder once, if already there, don't download
+# https://gist.github.com/mGalarnyk/05e4147b7fdfe4f94863e693644b43d9
+# https://askubuntu.com/a/870545/458247
 $conda_installation = <<SCRIPT
 yum -y install bzip2
 if [ ! -f /vagrant/anaconda.sh ]; then
